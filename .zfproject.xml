@@ -23,6 +23,7 @@
           <dbTableFile dbTableName="Piece"/>
         </dbTableDirectory>
         <modelFile modelName="PieceMapper"/>
+        <modelFile modelName="Piece"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
