@@ -12,16 +12,19 @@ $pieces = $this->inbox;
 
   <?php foreach ($pieces as $piece): ?>
     <tr>
-      <td>
-        <?php echo $this->escape($piece->id) ?> :: 
-        <?php echo $this->escape($piece->week) ?> :: 
-        <?php echo $this->escape($piece->name) ?> :: 
-        <?php echo $this->escape($piece->devUrl) ?> :: 
-        <?php echo $this->escape($piece->gitUrl) ?> :: 
-        <?php echo $this->escape($piece->liveUrl) ?> :: 
-        <?php echo $this->escape($piece->designUrl) ?>
-      </td>
-
+      <td><?php echo $this->escape($piece->week) ?></td> 
+      <td><a href="<?php echo $this->escape($piece->devUrl) ?>" target="_blank"><?php echo $this->escape($piece->name) ?></a></td>
+      <?php 
+      if($piece->gitUrl != NULL){ ?>
+        <td><a href="<?php echo $this->escape($piece->gitUrl) ?>" target="_blank">Git</a></td> 
+          <?php } else { ?> <td>*</td><?php }
+      if($piece->liveUrl != NULL){ ?>
+        <td><a href="<?php echo $this->escape($piece->liveUrl) ?> " target="_blank">Live</a></td> 
+          <?php } else { ?> <td>*</td><?php } 
+      if($piece->designUrl != NULL){ ?>
+        <td><a href="<?php echo $this->escape($piece->designUrl) ?> " target="_blank">Design</a></td> 
+          <?php } else { ?> <td>*</td><?php } 
+      ?>
     </tr>
   <?php endforeach ?>
 
