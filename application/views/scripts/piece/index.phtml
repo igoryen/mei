@@ -1,4 +1,28 @@
 <br /><br />
 <div id="view-content">
-	<p>View script for controller <b>Piece</b> and script/action name <b>index</b></p>
+  <p>View script for controller <b>Piece</b> and script/action name <b>index</b></p>
 </div>
+Pieces: 
+<br />
+<?php
+
+$pieces = $this->inbox;
+?>
+<table>
+
+  <?php foreach ($pieces as $piece): ?>
+    <tr>
+      <td>
+        <?php echo $this->escape($piece->id) ?> :: 
+        <?php echo $this->escape($piece->week) ?> :: 
+        <?php echo $this->escape($piece->name) ?> :: 
+        <?php echo $this->escape($piece->devUrl) ?> :: 
+        <?php echo $this->escape($piece->gitUrl) ?> :: 
+        <?php echo $this->escape($piece->liveUrl) ?> :: 
+        <?php echo $this->escape($piece->designUrl) ?>
+      </td>
+
+    </tr>
+  <?php endforeach ?>
+
+</table>

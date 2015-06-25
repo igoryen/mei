@@ -7,7 +7,8 @@ class PieceController extends Zend_Controller_Action {
   }
 
   public function indexAction() {
-    // action body
+    $pm = new Application_Model_PieceMapper();
+    $this->view->inbox = $pm->fetchAll();
   }
 
 }

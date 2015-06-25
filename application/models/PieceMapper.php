@@ -30,10 +30,10 @@ class Application_Model_PieceMapper {
     $data = array(
       'week' => $piece->getWeek(),
       'name' => $piece->getName(),
-      'dev_url' => $piece->getDevUrl(),
-      'git_url' => $piece->getGitUrl(),
-      'live_url' => $piece->getLiveUrl(),
-      'design_url' => $piece->getDesignUrl(),
+      'devUrl' => $piece->getDevUrl(),
+      'gitUrl' => $piece->getGitUrl(),
+      'liveUrl' => $piece->getLiveUrl(),
+      'designUrl' => $piece->getDesignUrl(),
     );
     if (null === ($id = $piece->getId())) {
       unset($data['id']);
@@ -67,7 +67,7 @@ class Application_Model_PieceMapper {
 
   public function fetchAll() {
     $resultSet = $this->getDbTable()->fetchAll();
-    $userSet = array();
+    $pieceSet = array();
     foreach ($resultSet as $row) {
       $piece = new Application_Model_Piece();
       $piece->setId($row->id)
@@ -79,7 +79,8 @@ class Application_Model_PieceMapper {
         ->setDesignUrl($row->design_url);
       $pieceSet[] = $piece;
     }
-    return $pieceSet;
+    $outbox = $pieceSet;
+    return $outbox;
   }
 
 }

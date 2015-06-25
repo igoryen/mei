@@ -5,10 +5,10 @@ class Application_Model_Piece {
   protected $_id;
   protected $_week;
   protected $_name;
-  protected $_dev_url;
-  protected $_git_url;
-  protected $_live_url;
-  protected $_design_url;
+  protected $_devUrl;
+  protected $_gitUrl;
+  protected $_liveUrl;
+  protected $_designUrl;
 
   public function __construct(array $options = null) {
     if (is_array($options)) {
@@ -78,46 +78,46 @@ class Application_Model_Piece {
 
   # dev_url
 
-  public function setDevUrl($dev_url) {
-    $this->_dev_url = $dev_url;
+  public function setDevUrl($devUrl) {
+    $this->_devUrl = $devUrl;
     return $this;
   }
 
   public function getDevUrl() {
-    return $this->_dev_url;
+    return $this->_devUrl;
   }
 
   # git_url
 
-  public function setGitUrl($git_url) {
-    $this->_git_url = $git_url;
+  public function setGitUrl($gitUrl) {
+    $this->_gitUrl = $gitUrl;
     return $this;
   }
 
   public function getGitUrl() {
-    return $this->_git_url;
+    return $this->_gitUrl;
   }
 
   # live_url
 
-  public function setLiveUrl($live_url) {
-    $this->_live_url = $live_url;
+  public function setLiveUrl($liveUrl) {
+    $this->_liveUrl = $liveUrl;
     return $this;
   }
 
   public function getLiveUrl() {
-    return $this->_live_url;
+    return $this->_liveUrl;
   }
 
   # design_url
 
-  public function setDesignUrl($design_url) {
-    $this->_design_url = $design_url;
+  public function setDesignUrl($designUrl) {
+    $this->_designUrl = $designUrl;
     return $this;
   }
 
   public function getDesignUrl() {
-    return $this->_design_url;
+    return $this->_designUrl;
   }
 
 }

@@ -1,0 +1,9 @@
+1526
+
+devUrl = file:///C:/ig/aam/scan.html
+liveUrl = http://androidantivirus.mobi/v/sp/uk/ukdub/scan.php?voluumdata=vid..00000001-8b3b-4c5b-8000-000000000000__vpid..3f773000-1a36-11e5-8672-40f2878f2d1f__caid..b3ad1fbc-c06c-4fb3-84fd-08ab09d50c6a__rt..R__lid..0e0db8dd-2e41-4c0b-b3d0-01874cb88a94__oid1..ef79c
+
+clash of titans
+designUrl = C:\ig\HG_Clashoftitan\
+devUrl = http://dev-offers3.mowinisto.com/redirect/au/clash_of_titan_hu/ 
+

@@ -6,19 +6,21 @@
     <?php echo $this->headLink()->appendStylesheet('/css/global.css') ?>
   </head>
   <body>
+
     <div id="header" style="background-color: #EEEEEE; height: 30px;">
       <div id="header-logo" style="float: left">
         <b>Mei</b>
       </div>
       <div id="header-navigation" style="float: right">
-        <a href="<?php
-        echo $this->url(
-          array('controller' => 'user'), 'default', true)
-        ?>">Pieces</a>
+        <a href="<?php echo $this->url(['controller' => 'piece'], 'default', true) ?>">Pieces</a>
       </div>
     </div>
+    <?php 
+//    $t = new Application_Model_DbTable_Piece();
+//    echo get_class($t);
+    ?>
 
-    <?php echo $this->layout()->content ?>
-
+    <?php echo $this->layout()->content; ?>
+    <footer style="background-color: #EEEEEE; height: 30px;">Mei</footer>
   </body>
 </html>
