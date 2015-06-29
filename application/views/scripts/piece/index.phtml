@@ -5,27 +5,34 @@
 Pieces: 
 <br />
 <?php
-
 $pieces = $this->inbox;
 ?>
-<table>
 
-  <?php foreach ($pieces as $piece): ?>
-    <tr>
-      <td><?php echo $this->escape($piece->week) ?></td> 
-      <td><a href="<?php echo $this->escape($piece->devUrl) ?>" target="_blank"><?php echo $this->escape($piece->name) ?></a></td>
-      <?php 
-      if($piece->gitUrl != NULL){ ?>
-        <td><a href="<?php echo $this->escape($piece->gitUrl) ?>" target="_blank">Git</a></td> 
-          <?php } else { ?> <td>*</td><?php }
-      if($piece->liveUrl != NULL){ ?>
-        <td><a href="<?php echo $this->escape($piece->liveUrl) ?> " target="_blank">Live</a></td> 
-          <?php } else { ?> <td>*</td><?php } 
-      if($piece->designUrl != NULL){ ?>
-        <td><a href="<?php echo $this->escape($piece->designUrl) ?> " target="_blank">Design</a></td> 
-          <?php } else { ?> <td>*</td><?php } 
+
+<?php foreach ($pieces as $piece): ?>
+
+  <?php echo $this->escape($piece->week) ?>
+  <?php if ($piece->devUrl != NULL) { ?>
+    <a href="<?php echo $this->escape($piece->devUrl) ?>" target="_blank"><?php echo $this->escape($piece->name) ?></a>&nbsp;::&nbsp;<?php
+  }
+  else {
+    echo $this->escape($piece->name) . '&nbsp;::&nbsp;' ;
+  }
+  if ($piece->gitUrl != NULL) {
+    ?>
+    <a href="<?php echo $this->escape($piece->gitUrl) ?>" target="_blank">Git</a>&nbsp;::&nbsp;
+  <?php }
+  else { ?>*&nbsp;::&nbsp;<?php }
+  if ($piece->liveUrl != NULL) {
+    ?>
+    <td><a href="<?php echo $this->escape($piece->liveUrl) ?> " target="_blank">Live</a>&nbsp;::&nbsp;
+    <?php }
+    else { ?>*&nbsp;::&nbsp;<?php }
+    if ($piece->designUrl != NULL) {
       ?>
-    </tr>
-  <?php endforeach ?>
-
-</table>
+    <td><a href="<?php echo $this->escape($piece->designUrl) ?> " target="_blank">Design</a>
+    <?php }
+    else { ?>*<?php }
+  ?>
+    <br/>
+<?php endforeach ?>
