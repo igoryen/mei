@@ -66,7 +66,9 @@ class Application_Model_PieceMapper {
   }
 
   public function fetchAll() {
-    $resultSet = $this->getDbTable()->fetchAll();
+    $select = $this->getDbTable()->select();
+    $select->order('week DESC');
+    $resultSet = $this->getDbTable()->fetchAll($select);
     $pieceSet = array();
     foreach ($resultSet as $row) {
       $piece = new Application_Model_Piece();
