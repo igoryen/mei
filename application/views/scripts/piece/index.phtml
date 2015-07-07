@@ -50,6 +50,12 @@ $pieces = $this->inbox;
     </td>
   <?php }
   else { ?><td>-</td><?php }
+  if ($piece->comment != NULL) { ?> 
+    <td>
+      <?php echo $this->escape($piece->comment) ?>
+    </td>
+  <?php }
+  else { ?><td>-</td><?php }
   ?>
     </tr>
 <?php endforeach ?>

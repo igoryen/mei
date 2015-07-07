@@ -10,6 +10,7 @@ class Application_Model_Piece {
   protected $_gitUrl;
   protected $_liveUrl;
   protected $_designUrl;
+  protected $_comment;
 
   public function __construct(array $options = null) {
     if (is_array($options)) {
@@ -132,4 +133,13 @@ class Application_Model_Piece {
     return $this->_designUrl;
   }
 
+  # comment
+  public function setComment($comment) {
+    $this->_comment = $comment;
+    return $this;
+  }
+
+  public function getComment() {
+    return $this->_comment;
+  }
 }

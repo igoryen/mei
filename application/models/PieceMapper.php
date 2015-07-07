@@ -35,6 +35,7 @@ class Application_Model_PieceMapper {
       'gitUrl' => $piece->getGitUrl(),
       'liveUrl' => $piece->getLiveUrl(),
       'designUrl' => $piece->getDesignUrl(),
+      'comment' => $piece->getComment(),
     );
     if (null === ($id = $piece->getId())) {
       unset($data['id']);
@@ -57,6 +58,7 @@ class Application_Model_PieceMapper {
       return;
     }
     $row = $result->current();
+    # $row->bla (bla is the column name in its DB spelling)
     $piece->setId($row->id)
       ->setWeek($row->week)
       ->setName($row->name)
@@ -64,7 +66,8 @@ class Application_Model_PieceMapper {
       ->setDevUrl($row->dev_url)
       ->setGitUrl($row->git_url)
       ->setLiveUrl($row->live_url)
-      ->setDesignUrl($row->design_url);
+      ->setDesignUrl($row->design_url)
+      ->setComment($row->comment);
   }
 
   public function fetchAll() {
@@ -76,7 +79,7 @@ class Application_Model_PieceMapper {
         // FROM piece AS p
         array('p' => 'piece'), 
         // SELECT p.id,p.week,p.name,p.dev_url,p.git_url,p.live_url,p.design_url, t.type AS typeName
-        array('id','week','name','dev_url', 'git_url', 'live_url','design_url'))
+        array('id','week','name','dev_url', 'git_url', 'live_url','design_url', 'comment'))
       // LEFT JOIN type AS t ON p.type = t.id
       ->joinLeft(
         array('t' => 'type'), 
@@ -95,7 +98,8 @@ class Application_Model_PieceMapper {
         ->setDevUrl($row[dev_url])
         ->setGitUrl($row[git_url])
         ->setLiveUrl($row[live_url])
-        ->setDesignUrl($row[design_url]);
+        ->setDesignUrl($row[design_url])
+        ->setComment($row[comment]);
       $pieceSet[] = $piece;
     }
     $outbox = $pieceSet;
