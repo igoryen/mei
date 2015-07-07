@@ -30,6 +30,7 @@ class Application_Model_PieceMapper {
     $data = array(
       'week' => $piece->getWeek(),
       'name' => $piece->getName(),
+      'type' => $piece->getType(),
       'devUrl' => $piece->getDevUrl(),
       'gitUrl' => $piece->getGitUrl(),
       'liveUrl' => $piece->getLiveUrl(),
@@ -59,6 +60,7 @@ class Application_Model_PieceMapper {
     $piece->setId($row->id)
       ->setWeek($row->week)
       ->setName($row->name)
+      ->setType($row->type)
       ->setDevUrl($row->dev_url)
       ->setGitUrl($row->git_url)
       ->setLiveUrl($row->live_url)
@@ -66,19 +68,34 @@ class Application_Model_PieceMapper {
   }
 
   public function fetchAll() {
-    $select = $this->getDbTable()->select();
+    $app = Zend_Registry::get('app');
+    $bootstrap = $app->getBootstrap();
+    $db = $bootstrap->getResource('db');
+    $select = $db->select()
+      ->from(
+        // FROM piece AS p
+        array('p' => 'piece'), 
+        // SELECT p.id,p.week,p.name,p.dev_url,p.git_url,p.live_url,p.design_url, t.type AS typeName
+        array('id','week','name','dev_url', 'git_url', 'live_url','design_url'))
+      // LEFT JOIN type AS t ON p.type = t.id
+      ->joinLeft(
+        array('t' => 'type'), 
+        'p.type = t.id', 
+        array('typeName' => 'name'));
     $select->order('week DESC');
-    $resultSet = $this->getDbTable()->fetchAll($select);
+    $resultSet = $db->fetchAll($select);
+    
     $pieceSet = array();
     foreach ($resultSet as $row) {
-      $piece = new Application_Model_Piece();
-      $piece->setId($row->id)
-        ->setWeek($row->week)
-        ->setName($row->name)
-        ->setDevUrl($row->dev_url)
-        ->setGitUrl($row->git_url)
-        ->setLiveUrl($row->live_url)
-        ->setDesignUrl($row->design_url);
+      $piece = new Application_Model_PieceWithType();      
+      $piece->setId($row[id])
+        ->setWeek($row[week])
+        ->setName($row[name])
+        ->setTypeName($row[typeName])
+        ->setDevUrl($row[dev_url])
+        ->setGitUrl($row[git_url])
+        ->setLiveUrl($row[live_url])
+        ->setDesignUrl($row[design_url]);
       $pieceSet[] = $piece;
     }
     $outbox = $pieceSet;
