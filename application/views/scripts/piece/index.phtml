@@ -7,10 +7,16 @@ Pieces:
 <?php
 $pieces = $this->inbox;
 ?>
-<table>
+<table id="pieces">
 
-<?php foreach ($pieces as $piece): ?>
-  <tr>
+<?php 
+$alt = 0;
+foreach ($pieces as $piece): ?>
+  
+  <?php if($alt % 2 == 0){?>
+  <tr class="alt">
+  <?php } else { ?> <tr> <?php } ?>
+    
     <td><?php echo $this->escape($piece->week) ?></td>
   <?php if ($piece->devUrl != NULL) { ?>
     <td>
@@ -58,5 +64,7 @@ $pieces = $this->inbox;
   else { ?><td>-</td><?php }
   ?>
     </tr>
-<?php endforeach ?>
+<?php 
+$alt++;
+endforeach ?>
 </table>
