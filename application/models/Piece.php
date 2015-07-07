@@ -5,6 +5,7 @@ class Application_Model_Piece {
   protected $_id;
   protected $_week;
   protected $_name;
+  protected $_type;
   protected $_devUrl;
   protected $_gitUrl;
   protected $_liveUrl;
@@ -74,6 +75,17 @@ class Application_Model_Piece {
 
   public function getName() {
     return $this->_name;
+  }
+  
+  # type
+
+  public function setType($type) {
+    $this->_type = (int) $type;
+    return $this;
+  }
+
+  public function getType() {
+    return $this->_type;
   }
 
   # dev_url
