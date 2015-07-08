@@ -27,14 +27,16 @@ class Application_Model_PieceMapper {
    * @param Application_Model_Piece $piece
    */
   public function save(Application_Model_Piece $piece) {
+    # the array keys should be identical to the names of the columns in the DB
+    # because they will be used as is in the INSERT query
     $data = array(
       'week' => $piece->getWeek(),
       'name' => $piece->getName(),
       'type' => $piece->getType(),
-      'devUrl' => $piece->getDevUrl(),
-      'gitUrl' => $piece->getGitUrl(),
-      'liveUrl' => $piece->getLiveUrl(),
-      'designUrl' => $piece->getDesignUrl(),
+      'dev_url' => $piece->getDevUrl(),
+      'git_url' => $piece->getGitUrl(),
+      'live_url' => $piece->getLiveUrl(),
+      'design_url' => $piece->getDesignUrl(),
       'comment' => $piece->getComment(),
     );
     if (null === ($id = $piece->getId())) {
