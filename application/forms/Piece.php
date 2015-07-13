@@ -33,7 +33,7 @@ class Application_Form_Piece extends Zend_Form {
     // Add a type element
     $this->addElement('text', 'type', array(
       'label' => 'Type:',
-      'required' => true,
+      //'required' => true,
       'filters' => array('StringTrim'),
       //'validators' => array('EmailAddress', )
     ));
@@ -41,7 +41,7 @@ class Application_Form_Piece extends Zend_Form {
     // Add a dev_url element
     $this->addElement('text', 'devUrl', array(
       'label' => 'Dev URL:',
-      'required' => true,
+      //'required' => true,
       //'filters' => array('StringTrim'),
       //'validators' => array('EmailAddress', )
     ));
@@ -49,7 +49,7 @@ class Application_Form_Piece extends Zend_Form {
     // Add a git_url element
     $this->addElement('text', 'gitUrl', array(
       'label' => 'Git URL:',
-      'required' => true,
+      //'required' => true,
       'filters' => array('StringTrim'),
       //'validators' => array('EmailAddress', )
     ));
@@ -57,7 +57,7 @@ class Application_Form_Piece extends Zend_Form {
     // Add a live_url element
     $this->addElement('text', 'liveUrl', array(
       'label' => 'Live URL:',
-      'required' => true,
+      //'required' => true,
       'filters' => array('StringTrim'),
       //'validators' => array('EmailAddress', )
     ));
@@ -65,7 +65,7 @@ class Application_Form_Piece extends Zend_Form {
     // Add a design_url element
     $this->addElement('text', 'designUrl', array(
       'label' => 'Design URL:',
-      'required' => true,
+      //'required' => true,
       'filters' => array('StringTrim'),
       //'validators' => array('EmailAddress', )
     ));
@@ -73,7 +73,7 @@ class Application_Form_Piece extends Zend_Form {
     // Add the comment element
     $this->addElement('textarea', 'comment', array(
       'label' => 'Please Comment:',
-      'required' => true,
+      //'required' => true,
 //      'validators' => array(
 //        array('validator' => 'StringLength', 'options' => array(0, 20))
 //      )
